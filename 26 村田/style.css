@@ -1,0 +1,27 @@
+body {
+    background-color: #ffffff;
+}
+img.example1 {
+width: 900px;
+height: 400px;
+ object-fit: cover;
+}
+
+h1 {
+    font-size: 50px;
+   font-family:'Skip';
+   
+}
+h2 {
+    font-size: 40px;
+   font-family:'Skip';
+   background-color: #87ceeb;
+}
+h3 {
+    font-size: 30px;
+   font-family:'Skip';
+}
+h4 {
+    font-size: 20px;
+   font-family:'Skip';
+}
