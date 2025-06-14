@@ -1,121 +1,348 @@
 <!DOCTYPE html>
-<html>
-
-   
+<html lang="ja">
 <head>
-     <meta charset="UTF-8" />
-      <style type="text/css">p { color : rgb(0, 144, 228); }</style> 
-    <meta name="viewport" content="width=device-width">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>雰囲気丸分かりサイト - IT系企業</title>
     <style>
-    .bordered-text {
-      border: 2px solid black;
-      padding: 10px;
-          }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            color: #4a5568;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h3 {
+            font-size: 1.5rem;
+            color: #667eea;
+            font-weight: 300;
+        }
+
+        .company-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .company-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .company-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .company-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .company-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .company-content {
+            padding: 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h3 {
+            font-size: 1.8rem;
+            color: #4a5568;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: inline-block;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-item {
+            background: #f8f9fa;
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .feature-item::before {
+            content: "✓";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .voice-item {
+            background: #fff3cd;
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #ffc107;
+            position: relative;
+        }
+
+        .voice-item::before {
+            content: "💬";
+            margin-right: 10px;
+        }
+
+        .links-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .link-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .link-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            color: white;
+            text-decoration: none;
+        }
+
+        .link-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .link-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            word-break: break-all;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .company-header h2 {
+                font-size: 1.8rem;
+            }
+            
+            .links-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .company-image {
+                height: 200px;
+            }
+        }
+
+        .intro-image {
+            width: 100%;
+            max-width: 600px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin: 20px auto;
+            display: block;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body>
-   
-  <h1>雰囲気丸分かりサイト</h1>
-  <h3>IT系企業</h3>
-    <img src="1.jpg" alt="例の画像" class="example1">
-    
-     
-    <h2>1社目　NTTデータ</h2>
-    <img src="NTT.png" alt="例の画像" class="example1">
-    <h3>社内雰囲気</h3>
-    <h4>
-   <li> 堅苦しくなく、気軽に相談できる雰囲気がある.</li>
-   <br>
-   <li>服装もオフィスカジュアルが基本で、よりリラックスできる環境.</li>
-   <br>
-   <li>部署や職種によって、様々な人材が一緒に働いているため、多角的な視点での議論が期待できる.</li>
-   <br>
-   <li>最先端の取り組みや技術に力を入れており、常に新しいことに挑戦する姿勢が見られる.</li>
-    <br>
-   <li>上下関係なく、意見を言いやすい風土がある.</li>
-    <br>
-   <li>新人や若手社員の育成に力を入れており、周囲のケアも徹底している.</li>
-   <br>
-    <h3>働いている人の声</h3>
-    <h4>
-    <li>年功序列が根付いていると思っていたが、若手でも成果を出せば評価してもらえる</li>
-     <br>
-    <li>固い雰囲気の社員が多いのかと思っていたが、柔らかい雰囲気の人が多い</li>
-     <br>
-    <li>大企業なので若手のうちは重要な仕事を任されることは少ないと思っていたが、実際には若いうちから責任のある業務を担当できたことが嬉しかった。</li>
-     <br>
-    <li>働きやすい会社だと思って入社したが、実際に働きやすい環境が整っている会社だった</li>
-     <br>
-    <li>安定している会社というイメージであったが、いざ入社してみると安定しているだけではなく新規領域にも取り組んでいる会社だったのが意外だった</li>
-     <br>
-    </h4>
-      <h3>インターン申請URL</h3>
-      <h4><a href="https://x.gd/oOlYl" target="_blank"><div class="box1"><p>https://x.gd/oOlYl</p></div></a></h3>
-       <h3>企業ホームページ</h3>
-       <h4><a href="https://www.ntt-labs.jp/internship/" taeget="_blank"> <div class="box1"><p>"https://www.ntt-labs.jp/internship/"</p></div></a></h3>
-       <br>
-  
-    <h2>2社目　富士通</h2>
-    <img src="fujitsu.png" alt="例の画像" class="example1">
-    <br>
+    <div class="container">
+        <header class="header">
+            <h1>雰囲気丸分かりサイト</h1>
+            <h3>IT系企業</h3>
+            <img src="1.jpg" alt="IT企業イメージ" class="intro-image">
+        </header>
 
-    <h3>社内雰囲気</h3>
-    <h4>
-    <li>団結力: 富士通では社員の帰属意識が低くなりがちで、改善の余地がある</li>
-    <br>
-    <li>コミュニケーション: 部門間の連携が不足しているという意見がある。</li>
-    <br>
-    <li>会社文化: 社内文化は堅実で形式的だが、オープンなコミュニケーションが推奨されている</li>
-    <br>
-    <li>性別による評価: 女性社員も参加しやすい環境が整備されつつある</li>
-    <br>
-     </h4>
-     <h3>インターンに行った人の声</h3>
-     <h4>
-    <li>社員の方と交流する機会が多く、社風や人柄なども好印象だった</li>
-    <br>
-    <li>インターンを通じて、社員の方々が学生一人一人をしっかりと見てサポートしてくれる姿勢が非常に印象的でした。</li>
-    <br>
-    業務においても、人との関わりを大切にしている企業だと実感しました。</li>
-    <br>
-    </h4>
-     <h3>企業ホームページ</h3>
-     <h4><a href="https://www.furukawa-ringyo.co.jp/company/group/" target="_blank"><div class="box1"><p>https://www.furukawa-ringyo.co.jp/company/group/</p></div></a></h3>
-      <h3>インターン申請URL</h3>
-      <h4><a href="https://fujitsu.recruiting.jp.fujitsu.com/intern/" target="_blank"><div class="box1"><p>https://fujitsu.recruiting.jp.fujitsu.com/intern/</p></div></a></h3>
-       <br>
-      <h2>3社目　SCSK</h2>
-       <img src="SCSK.png" alt="例の画像" class="example1"><br>
-      <h3>社内雰囲気</h3>
-      <h4>
-        <li>残業が少なく、有給休暇の取得が推奨されているため、ワークライフバランスが取りやすい環境です</li><br>
-        <li>上司や同僚とのコミュニケーションが取りやすく、意見が言いやすい雰囲気です</li><br>
-        <li>リモートワークを推進し、社員が時間や場所に縛られずに働ける環境を整備しています</li><br>
-        <li>社員の意見や視点を尊重し、心理的安全性の高い職場の実現を目指しています</li><br>
-        <li>企業理念や行動規範（「創造への情熱で高みを目指す」「お客様と社会のために誠実さと責任感を<br>もって行動する」「相互理解と尊重に基づきチームで協働する」）が社員に浸透している<br>かを確認する取り組みも行っています</li><br>
+        <!-- NTTデータ -->
+        <article class="company-card">
+            <div class="company-header">
+                <h2>1社目　NTTデータ</h2>
+                <img src="NTT.png" alt="NTTデータ" class="company-image">
+            </div>
+            <div class="company-content">
+                <section class="section">
+                    <h3>社内雰囲気</h3>
+                    <ul class="feature-list">
+                        <li class="feature-item">堅苦しくなく、気軽に相談できる雰囲気がある</li>
+                        <li class="feature-item">服装もオフィスカジュアルが基本で、よりリラックスできる環境</li>
+                        <li class="feature-item">部署や職種によって、様々な人材が一緒に働いているため、多角的な視点での議論が期待できる</li>
+                        <li class="feature-item">最先端の取り組みや技術に力を入れており、常に新しいことに挑戦する姿勢が見られる</li>
+                        <li class="feature-item">上下関係なく、意見を言いやすい風土がある</li>
+                        <li class="feature-item">新人や若手社員の育成に力を入れており、周囲のケアも徹底している</li>
+                    </ul>
+                </section>
 
-        </h4>
-      <h3>働いている人の声</h3>
-      <h4>
-      <li>社員の方と交流する機会が多く、社風や人柄なども好印象だった</li><br>
-      <li>企業規模が大きい分、意思決定に時間がかかる場合があるようです</li><br>
-      <li>部門間の連携が完璧とは言えず、情報共有に手間がかかることもあります</li><br>
-      </h4>
-      <h3>インターンに行った人の声</h3>
-      <h4>
-      <li>人事担当者だけでなく、技術系社員や若手社員、役員・マネージャーなど、幅広い職種の社員と交流する機会がある</li><br>
-      <li>社員が気さくで、質問に真摯に答えてくれるため、企業や社員の雰囲気を掴みやすい</li><br>
-      <li>「ホワイト企業」と言われるSCSKの社風や、社員を大切にする文化を実感できる</li><br>
-      <li>文系でもIT業界で活躍できる仕事が多いことを知るきっかけになる</li><br>
-      </h4>
-     <h3>企業ホームページ</h3>
-     <h4><a href="https://www.scsk.jp//" target="_blank"><div class="box1"><p>https://www.scsk.jp//</p></div></a></h4>
-      <h3>インターン申請URL</h3>
-  
-      <h4><a href="https://www.scsk.jp/recruit/saiyo/" target="_blank"><div class="box1"><p>https://www.scsk.jp/recruit/saiyo/</p></div></a></h4>
-     </div>
+                <section class="section">
+                    <h3>働いている人の声</h3>
+                    <ul class="feature-list">
+                        <li class="voice-item">年功序列が根付いていると思っていたが、若手でも成果を出せば評価してもらえる</li>
+                        <li class="voice-item">固い雰囲気の社員が多いのかと思っていたが、柔らかい雰囲気の人が多い</li>
+                        <li class="voice-item">大企業なので若手のうちは重要な仕事を任されることは少ないと思っていたが、実際には若いうちから責任のある業務を担当できたことが嬉しかった</li>
+                        <li class="voice-item">働きやすい会社だと思って入社したが、実際に働きやすい環境が整っている会社だった</li>
+                        <li class="voice-item">安定している会社というイメージであったが、いざ入社してみると安定しているだけではなく新規領域にも取り組んでいる会社だったのが意外だった</li>
+                    </ul>
+                </section>
+
+                <div class="links-section">
+                    <a href="https://x.gd/oOlYl" target="_blank" class="link-card">
+                        <h4>インターン申請</h4>
+                        <p>https://x.gd/oOlYl</p>
+                    </a>
+                    <a href="https://www.ntt-labs.jp/internship/" target="_blank" class="link-card">
+                        <h4>企業ホームページ</h4>
+                        <p>https://www.ntt-labs.jp/internship/</p>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- 富士通 -->
+        <article class="company-card">
+            <div class="company-header">
+                <h2>2社目　富士通</h2>
+                <img src="fujitsu.png" alt="富士通" class="company-image">
+            </div>
+            <div class="company-content">
+                <section class="section">
+                    <h3>社内雰囲気</h3>
+                    <ul class="feature-list">
+                        <li class="feature-item">団結力: 富士通では社員の帰属意識が低くなりがちで、改善の余地がある</li>
+                        <li class="feature-item">コミュニケーション: 部門間の連携が不足しているという意見がある</li>
+                        <li class="feature-item">会社文化: 社内文化は堅実で形式的だが、オープンなコミュニケーションが推奨されている</li>
+                        <li class="feature-item">性別による評価: 女性社員も参加しやすい環境が整備されつつある</li>
+                    </ul>
+                </section>
+
+                <section class="section">
+                    <h3>インターンに行った人の声</h3>
+                    <ul class="feature-list">
+                        <li class="voice-item">社員の方と交流する機会が多く、社風や人柄なども好印象だった</li>
+                        <li class="voice-item">インターンを通じて、社員の方々が学生一人一人をしっかりと見てサポートしてくれる姿勢が非常に印象的でした</li>
+                        <li class="voice-item">業務においても、人との関わりを大切にしている企業だと実感しました</li>
+                    </ul>
+                </section>
+
+                <div class="links-section">
+                    <a href="https://fujitsu.recruiting.jp.fujitsu.com/intern/" target="_blank" class="link-card">
+                        <h4>インターン申請</h4>
+                        <p>https://fujitsu.recruiting.jp.fujitsu.com/intern/</p>
+                    </a>
+                    <a href="https://www.furukawa-ringyo.co.jp/company/group/" target="_blank" class="link-card">
+                        <h4>企業ホームページ</h4>
+                        <p>https://www.furukawa-ringyo.co.jp/company/group/</p>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- SCSK -->
+        <article class="company-card">
+            <div class="company-header">
+                <h2>3社目　SCSK</h2>
+                <img src="SCSK.png" alt="SCSK" class="company-image">
+            </div>
+            <div class="company-content">
+                <section class="section">
+                    <h3>社内雰囲気</h3>
+                    <ul class="feature-list">
+                        <li class="feature-item">残業が少なく、有給休暇の取得が推奨されているため、ワークライフバランスが取りやすい環境です</li>
+                        <li class="feature-item">上司や同僚とのコミュニケーションが取りやすく、意見が言いやすい雰囲気です</li>
+                        <li class="feature-item">リモートワークを推進し、社員が時間や場所に縛られずに働ける環境を整備しています</li>
+                        <li class="feature-item">社員の意見や視点を尊重し、心理的安全性の高い職場の実現を目指しています</li>
+                        <li class="feature-item">企業理念や行動規範（「創造への情熱で高みを目指す」「お客様と社会のために誠実さと責任感をもって行動する」「相互理解と尊重に基づきチームで協働する」）が社員に浸透している</li>
+                    </ul>
+                </section>
+
+                <section class="section">
+                    <h3>働いている人の声</h3>
+                    <ul class="feature-list">
+                        <li class="voice-item">社員の方と交流する機会が多く、社風や人柄なども好印象だった</li>
+                        <li class="voice-item">企業規模が大きい分、意思決定に時間がかかる場合があるようです</li>
+                        <li class="voice-item">部門間の連携が完璧とは言えず、情報共有に手間がかかることもあります</li>
+                    </ul>
+                </section>
+
+                <section class="section">
+                    <h3>インターンに行った人の声</h3>
+                    <ul class="feature-list">
+                        <li class="voice-item">人事担当者だけでなく、技術系社員や若手社員、役員・マネージャーなど、幅広い職種の社員と交流する機会がある</li>
+                        <li class="voice-item">社員が気さくで、質問に真摯に答えてくれるため、企業や社員の雰囲気を掴みやすい</li>
+                        <li class="voice-item">「ホワイト企業」と言われるSCSKの社風や、社員を大切にする文化を実感できる</li>
+                        <li class="voice-item">文系でもIT業界で活躍できる仕事が多いことを知るきっかけになる</li>
+                    </ul>
+                </section>
+
+                <div class="links-section">
+                    <a href="https://www.scsk.jp/recruit/saiyo/" target="_blank" class="link-card">
+                        <h4>インターン申請</h4>
+                        <p>https://www.scsk.jp/recruit/saiyo/</p>
+                    </a>
+                    <a href="https://www.scsk.jp/" target="_blank" class="link-card">
+                        <h4>企業ホームページ</h4>
+                        <p>https://www.scsk.jp/</p>
+                    </a>
+                </div>
+            </div>
+        </article>
+    </div>
 </body>
-<html>
-
+</html>
